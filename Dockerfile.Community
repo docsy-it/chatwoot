@@ -1,5 +1,9 @@
 # https://hub.docker.com/r/chatwoot/chatwoot/tags
-FROM chatwoot/chatwoot:v4.15.1-ce
+# Versione impostabile da Railway con la variabile di servizio CHATWOOT_VERSION (es. 4.16.2).
+# Railway espone le variabili di servizio come build args: qui va dichiarata con ARG.
+ARG CHATWOOT_VERSION
+
+FROM chatwoot/chatwoot:v${CHATWOOT_VERSION:-4.15.1}-ce
 
 RUN apk add --no-cache multirun postgresql-client
 
